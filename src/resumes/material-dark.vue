@@ -7,9 +7,9 @@
     <div class="section-headline">
       {{ lang.contact }}
     </div>
-    <div v-if="person.birth" class="item">
+    <div class="item">
       <div class="icon">
-        <i class="material-icons">account_circle</i>
+        <i class="fa fa-user-circle" aria-hidden="true"></i>
       </div>
       <div class="text">
         <ul>
@@ -20,7 +20,7 @@
 
     <div class="item">
       <div class="icon">
-        <i class="material-icons">location_city</i>
+        <i class="fa fa-home" aria-hidden="true"></i>
       </div>
       <div class="text">
         <ul>
@@ -30,10 +30,10 @@
       </div>
     </div>
 
-    <a :href="contactLinks.phone">
+    <a :href="'tel:'+person.contact.phone">
       <div class="item">
         <div class="icon">
-          <i class="material-icons">phone</i>
+          <i class="fa fa-phone" aria-hidden="true"></i>
         </div>
         <div class="text">
           {{person.contact.phone}}
@@ -41,10 +41,10 @@
       </div>
     </a>
 
-    <a :href="contactLinks.email">
+    <a :href="'mailto:'+person.contact.email">
       <div class="item">
         <div class="icon">
-          <i class="material-icons">email</i>
+          <i class="fa fa-envelope" aria-hidden="true"></i>
         </div>
         <div class="text">
           {{person.contact.email}}
@@ -52,7 +52,7 @@
       </div>
     </a>
 
-    <a v-if="person.contact.github" :href="contactLinks.github" target="_blank">
+    <a v-if="person.contact.github" :href="'https://github.com/'+person.contact.github" target="_blank">
       <div class="item">
         <div class="icon">
           <i class="fa fa-github"></i>
@@ -67,7 +67,7 @@
     <a v-if="person.contact.website" :href="person.contact.website" target="_blank">
       <div class="item">
         <div class="icon">
-          <i class="material-icons">language</i>
+          <i class="fa fa-globe" aria-hidden="true"></i>
         </div>
         <div class="text">
           <span>{{person.contact.website}}</span>
@@ -124,7 +124,7 @@
 <script>
 import Vue from 'vue';
 import { getVueOptions } from './options';
-const name = 'material-dark';
+let name = 'material-dark';
 
 export default Vue.component(name, getVueOptions(name));
 </script>
@@ -225,7 +225,7 @@ p {
 .m_box {
   box-shadow:0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 }
-.fa, .material-icons {
+.fa{
   display:inline-block;
   font-style:normal;
   font-weight:normal;
@@ -290,7 +290,7 @@ h4 {
       width:16%;
       float:left;
       margin-left:0;
-      .fa, .material-icons {
+      .fa {
         text-align:center;
         display:block;
         font-size:30pt;
@@ -362,7 +362,7 @@ h4 {
     width:100%;
     margin-top:13px;
     float:left;
-    .fa, .material-icons {
+    .fa {
       display:inherit;
       text-align:center;
     }
@@ -420,7 +420,7 @@ h4 {
             position:absolute;
             top:0;
             bottom:0;
-            .fa, .material-icons {
+            .fa {
               font-size:13px;
               position:absolute;
               top:-4px;

@@ -1,29 +1,17 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/salomonelli/best-resume-ever">
-  <img src="src/assets/logo.png" alt="Markdownify" width="200"></a>
-  <br>
-  best-resume-ever
+  快简历（精简版）
   <br>
 </h1>
 
-<div align="center">
-
-[![Travis badge](https://travis-ci.org/salomonelli/best-resume-ever.svg?branch=master)](https://travis-ci.org/salomonelli/best-resume-ever)
-
-</div>
-
 <h4 align="center">
-  :necktie: :briefcase: Build fast :rocket: and easy multiple beautiful resumes and create your best CV ever!
-  <br><br>
-  Made with Vue and LESS.
+  多种简历模板可供选择，当然也可以创建你自己的简历，欢迎分享模板~
 </h4>
 
 <br>
 <br>
 
 <p align="left">
-<img src="src/assets/preview/resume-creative.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 <img src="src/assets/preview/resume-purple.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 <img src="src/assets/preview/resume-side-bar-rtl.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 <img src="src/assets/preview/resume-left-right-rtl.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
@@ -31,75 +19,65 @@
 <img src="src/assets/preview/resume-left-right.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 <img src="src/assets/preview/resume-side-bar.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 <img src="src/assets/preview/resume-oblique.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
-<img src="src/assets/preview/resume-cool.png" width="150" style="margin-right:5px; border: 1px solid #ccc;" />
 </p>
 
 <br>
 <br>
 
-## Prerequisite
+## 最低配置
 
-1. It is required to have NodeJs with version 8.5 or higher
+NodeJs >= 8.5
 
-2. If you do not have installed node.js in your machine then go to [this link](https://nodejs.org/en/download/) in order to install node.
+## 如何使用
 
-## How to use
+1. 克隆本项目。
 
-best-resume-ever requires at least node v.8.5.0.
+2. 执行 `npm install`。
 
-1. Clone this repository.
-```
-git clone https://github.com/salomonelli/best-resume-ever
-```
+3. 在`resume/`文件夹中填写信息: 编辑`data.yml`中的内容，把`id.jpg`更新为个人图片。
 
-2. Go to the cloned directory (e.g. `cd best-resume-ever`).
+4. 执行 `npm run dev` 预览简历。
 
-3. Run `npm install`.
-
-4. Customize your resume in the `resume/` directory: edit your data `data.yml` and replace your profile-picture `id.jpg`.
-
-5. Preview resumes with `npm run dev`.
-
-6. Export with `npm run export`.
-
-
-All resumes will be exported to the `pdf/` folder.
+5. 找到适合的简历，浏览器打印为PDF。
 
 <br>
 
 
 ## Creating and Updating Templates
 
-Please read the <a href="DEVELOPER.md">developer docs</a> on how to create or update templates.
+自定义简历模板请参考<a href="DEVELOPER.md">开发文档</a>。
 
 <br>
 
 
-## Contribute
-
-Feel free to add your own templates, language supports, fix bugs or improve the docs. Any kind of help is appreciated! If you make any kind of changes to an existing template, please commit them as new templates.
-
+## 来约
+欢迎使用，发现问题请帮忙修下，哈哈。  
+有好的简历模板请多分享，图片也可以，我们把它做成模板，造福更多人。
 <br>
 
 
-## Credits
-
-This project uses several open source packages:
-
-* <a href="https://github.com/vuejs/vue" target="_blank">Vue</a>
-* <a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>
-* <a href="https://github.com/less/less.js" target="_blank">LESS</a>
-
 <br>
 
+## 与原版的差别
+项目fork的是salomonelli的<a href="https://salomonelli.github.io/best-resume-ever">best-resume-ever</a>，为原作者点赞！
 
----
+更改的内容如下：
+1. 删除了导出PDF的功能：
 
-> [sarasteiert.com](https://www.sarasteiert.com) &nbsp;&middot;&nbsp;
-> GitHub [@salomonelli](https://github.com/salomonelli) &nbsp;&middot;&nbsp;
-> Twitter [@salomonelli](https://twitter.com/salomonelli)
+    原项目中使用puppeteer（chrome的内核包）实现导出功能，实现原理和浏览器中“打印 -> 另存为PDF”功能相同。但由于puppeteer包比较大，install时耗费时间长，且下载过程容易中断（特别是国内），所以把这部分功能去除。  
+    经测试，通过浏览器（以Chrome为例）的“打印 -> 另存为PDF”功能（打印选项：布局->纵向；纸张->A4；边距->无） 保存的PDF，与源代码直接导出的结果完全相同。
+
+2. 删除了预览功能（PDF->IMAGE）：
+
+   原项目中，利用pdf-image把PDF导出为图片来达到预览PDF的功能。现在打印PDF前，可以直接在打印窗口预览，所以省去了这一功能。
+
+3. 删除了doc目录：
+
+   因为使用简单，而且是精简版，所以删除了文档部分内容。
+
+4. 删除了对material-design-icon、material-icon的引用：
+
+   原项目中为了表示图标的多样性，所以引入了font-awesome和material的icon，但是为了保持简历风格的统一性，实际只需要一种icon即可。material的icon包由于比较大，且下载十分困难，所以去除了对它的引用，用font-awesome的图标做了替代。
 
 
-## License
-
-[MIT](https://github.com/salomonelli/best-resume-ever/blob/master/LICENCE.md)
+>精简后的代码依赖更少，包更小，对环境的支持也更好。windows用户可以放心安全的使用了。

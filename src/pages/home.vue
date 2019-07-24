@@ -62,22 +62,6 @@
         </div>
       </router-link>
     </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/creative'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-creative.png" />
-          <span>creative</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/cool'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-cool.png" />
-          <span>cool</span>
-        </div>
-      </router-link>
-    </div>
   </div>
 </div>
 </template>
@@ -85,7 +69,7 @@
 <script>
 import Vue from 'vue';
 export default Vue.component('resume', {
-    name: 'app'
+  name: 'app'
 });
 </script>
 

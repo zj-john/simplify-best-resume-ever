@@ -6,5 +6,4 @@ import './side-bar.vue';
 import './purple.vue';
 import './side-bar-rtl.vue';
 import './left-right-rtl.vue';
-import './creative.vue';
-import './cool.vue';
+import './template.vue';
