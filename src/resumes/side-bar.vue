@@ -2,7 +2,7 @@
   <div id="resume2" class="resume">
       <div class="top-row">
           <span class="person-name">
-            {{person.name.first}} {{person.name.middle}} {{person.name.last}}
+            {{person.name.cn}} {{person.name.en}}
           </span>
           <span class="person-position">
             {{person.position}}
@@ -33,7 +33,7 @@
                   <i class="fa fa-circle" aria-hidden="true"></i>
               </div>
               <div class="contact-row">
-                  {{person.contact.street}} <br> {{person.contact.city}}
+                  {{person.contact.city}}
               </div>
               <div v-if="person.contact.github" class="contact-row dots">
                   <i class="fa fa-circle" aria-hidden="true"></i>

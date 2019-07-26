@@ -24,7 +24,6 @@
       </div>
       <div class="text">
         <ul>
-          <li>{{person.contact.street}}</li>
           <li>{{person.contact.city}}</li>
         </ul>
       </div>
@@ -94,7 +93,7 @@
 
   <div class="rightCol">
     <div class="title">
-      <h2>{{person.name.first}} {{person.name.middle}} {{person.name.last}}</h2>
+      <h2>{{person.name.cn}} {{person.name.en}}</h2>
       <div>{{person.position}}</div>
     </div>
 

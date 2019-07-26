@@ -1,7 +1,7 @@
 <template>
 <div class="resume" id="resume1">
   <div class="row text-center">
-    <span class="name">{{person.name.first}} {{person.name.middle}} {{person.name.last}}</span>
+    <span class="name">{{person.name.cn}} {{person.name.en}}</span>
   </div>
   <div class="row text-center">
     <p class="position center">{{person.position}}</p>
@@ -31,10 +31,6 @@
         <tr>
           <td><i class="fa fa-phone" aria-hidden="true"></i></td>
           <td><a :href="'tel:'+person.contact.phone">{{person.contact.phone}}</a></td>
-        </tr>
-        <tr>
-          <td><i class="fa fa-home" aria-hidden="true"></i></td>
-          <td>{{person.contact.street}} <br> {{person.contact.city}}</td>
         </tr>
         <tr v-if="person.contact.website">
           <td><i class="fa fa-globe" aria-hidden="true"></i></td>

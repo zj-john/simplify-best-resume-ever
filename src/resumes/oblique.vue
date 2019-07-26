@@ -5,7 +5,7 @@
     <div class="person-header">
       <div class="person-wrapper">
         <div class="person">
-          <div class="name">{{person.name.first}} {{person.name.middle}} {{person.name.last}}</div>
+          <div class="name">{{person.name.cn}} {{person.name.en}}</div>
           <div class="position">{{person.position}}</div>
         </div>
         <div class="img">
@@ -60,7 +60,7 @@
       <span>;&nbsp;</span>
       <a :href="'tel:'+person.contact.phone">{{person.contact.phone}}</a>
       <span>;&nbsp;</span>
-      <span>{{person.contact.street}}, {{person.contact.city}}</span>
+      <span>{{person.contact.city}}</span>
       <span>;&nbsp;</span>
       <a v-if="person.contact.website" :href="person.contact.website">
               {{person.contact.website}}</a>

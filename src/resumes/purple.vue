@@ -3,7 +3,7 @@
     <div id="resume-header">
         <div id="header-left">
             <h2 id="position">{{person.position}}</h2>
-            <h1 id="name">{{person.name.first}} {{person.name.last}}</h1>
+            <h1 id="name">{{person.name.cn}} {{person.name.en}}</h1>
             <div id="info-flex">
                 <span id="email"><a :href='"mailto:" + person.contact.email'>
                   <i class="fa fa-envelope" aria-hidden="true"></i> {{person.contact.email}}</a></span>

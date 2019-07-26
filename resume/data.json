@@ -1,0 +1,87 @@
+{
+    "name": {
+      "cn": "张三",
+      "en": "John"
+    },
+    "about": "爱前端、爱小说、爱音乐、爱产品、爱游泳、爱动漫、爱家务、爱安静、爱萧萧。人生这么短，且行且努力。",
+    "position": "前端开发工程师",
+    "birth": {
+      "year": 1990,
+      "location": "上海"
+    },
+    "experience": [
+      {
+        "company": "百度",
+        "position": "开发工程师",
+        "timeperiod": "2016.07-2017.01",
+        "description": "写逻辑代码"
+      },
+      {
+        "company": "腾讯",
+        "position": "前端开发工程师",
+        "timeperiod": "2017.02-2018.02",
+        "description": "写前端代码"
+      },
+      {
+        "company": "阿里巴巴",
+        "position": "全栈开发工程师",
+        "timeperiod": "2018.03-",
+        "description": "独立写应用"
+      }
+    ],
+    "education": [
+      {
+        "degree": "计算机应用与技术 硕士",
+        "timeperiod": "2012.09 - 2015.07",
+        "description": "遗传算法 SVM Python"
+      },
+      {
+        "degree": "电子信息科学与技术 学士",
+        "timeperiod": "2008.09 - 2012.07",
+        "description": "模电 数电 单片机 C语言"
+      }
+    ],
+    "skills": [
+      {
+        "name": "HTML5",
+        "level": 99
+      },
+      {
+        "name": "CSS3",
+        "level": 95
+      },
+      {
+        "name": "JavaScript",
+        "level": 97
+      },
+      {
+        "name": "Node.js",
+        "level": 93
+      },
+      {
+        "name": "Angular 2",
+        "level": 60
+      },
+      {
+        "name": "TypeScript",
+        "level": 80
+      },
+      {
+        "name": "ES.Next",
+        "level": 70
+      },
+      {
+        "name": "Docker",
+        "level": 99
+      }
+    ],
+    "knowledge": "精通Photoshop和Illustrator, 对产品和架构一定经验.",
+    "contact": {
+      "email": "zj_john@qq.com",
+      "phone": "18019156602",
+      "city": "上海",
+      "website": "https://zj-john.github.io",
+      "github": "zj-john"
+    },
+    "lang": "cn"
+  }
