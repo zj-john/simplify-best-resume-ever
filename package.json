@@ -9,9 +9,9 @@
     "url": "git@github.com:zj-john/best-resume-ever.git"
   },
   "scripts": {
-    "dev": "node build/dev-server.js",
     "predev": "check-node-version --node \">= 8.0.0\"",
     "start": "node build/dev-server.js",
+    "build": "node build/build.js",
     "test:e2e": "concurrently \"npm run dev\" \"npm run test:cafe\" --success first --kill-others --raw",
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },

@@ -71,11 +71,7 @@ NodeJs >= 8.5
 
    原项目中，利用pdf-image把PDF导出为图片来达到预览PDF的功能。现在打印PDF前，可以直接在打印窗口预览，所以省去了这一功能。
 
-3. 删除了doc目录：
-
-   因为使用简单，而且是精简版，所以删除了文档部分内容。
-
-4. 删除了对material-design-icon、material-icon的引用：
+3. 删除了对material-design-icon、material-icon的引用：
 
    原项目中为了表示图标的多样性，所以引入了font-awesome和material的icon，但是为了保持简历风格的统一性，实际只需要一种icon即可。material的icon包由于比较大，且下载十分困难，所以去除了对它的引用，用font-awesome的图标做了替代。
 
