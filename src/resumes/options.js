@@ -2,15 +2,27 @@ import * as PERSON from '../../resume/data.json';
 import {
   terms
 } from '../terms';
+import {
+  getLocalstorage
+} from "@/services/utils.js";
 // Called by templates to decrease redundancy
 function getVueOptions (name) {
   let opt = {
     name: name,
     data () {
       return {
-        person: PERSON,
+        person: null,
         terms: terms
       };
+    },
+    created: function() {
+      // storage
+      let _data = getLocalstorage("resume_data");
+      if (_data) {
+        this.person = JSON.parse(_data);
+      } else {
+        this.person = PERSON;
+      }
     },
     computed: {
       lang () {

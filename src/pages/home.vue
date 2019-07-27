@@ -1,63 +1,21 @@
 <template>
 <div class="home">
-  <a href="https://github.com/zj-john/simplify-best-resume-ever" target="_blank">
-    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
-  </a>
-  <h3 class="title">快简历</h3>
+  <app-header></app-header>
+
   <div class="previews">
-    <div class="preview">
-      <router-link v-bind:to="'/resume/material-dark'">
+    <div class="preview" v-for="resume in resumeList" :key="resume.name">
+      <router-link v-bind:to="`/resume/${resume.name}`">
         <div class="preview-wrapper">
-          <img src="../assets/preview/resume-material-dark.png" />
-          <span>material-dark</span>
+          <img :src="require(`../assets/preview/resume-${resume.name}.png`)" />
+          <span>{{ resume.name }}</span>
         </div>
       </router-link>
     </div>
     <div class="preview">
-      <router-link v-bind:to="'/resume/left-right'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-left-right.png" />
-          <span>left-right</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/oblique'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-oblique.png" />
-          <span>oblique</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/side-bar'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-side-bar.png" />
-          <span>side-bar</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/purple'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-purple.png" />
-          <span>purple</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/side-bar-rtl'">
-        <div class="preview-wrapper">
-          <img src="../assets/preview/resume-side-bar-rtl.png" />
-          <span>side-bar-rtl</span>
-        </div>
-      </router-link>
-    </div>
-    <div class="preview">
-      <router-link v-bind:to="'/resume/left-right-rtl'">
+      <router-link v-bind:to="'/custom'">
         <div class="preview-wrapper">
           <img src="../assets/preview/resume-left-right-rtl.png" />
-          <span>left-right-rtl</span>
+          <span>自定义模板</span>
         </div>
       </router-link>
     </div>
@@ -67,36 +25,31 @@
 
 <script>
 import Vue from 'vue';
+import appHeader from '@/components/layout/head';
 export default Vue.component('resume', {
-  name: 'app'
+  name: 'app',
+  components: {
+    appHeader
+  },
+  data: function () {
+    return {
+      resumeList: [
+        {'name': 'material-dark'},
+        {'name': 'left-right'},
+        {'name': 'oblique'},
+        {'name': 'side-bar'},
+        {'name': 'purple'},
+        {'name': 'left-right-rtl'},
+        {'name': 'side-bar-rtl'}
+      ]
+    };
+  }
 });
 </script>
 
 <style scoped>
 .home {
   font-family: 'Roboto' !important;
-}
-
-.logo {
-  text-align: center;
-}
-
-.logo img {
-  height: 50px;
-  margin-top: 40px;
-}
-
-.title {
-  margin-top: 40px;
-  font-weight: normal;
-  text-align: center;
-  width: 100%;
-  color: black;
-  font-weight: 300;
-  font-size: 30px;
-  line-height: 110%;
-  margin: 1.78rem 0 1.424rem 0;
-  margin-bottom: 40px;
 }
 
 .previews {
