@@ -2,7 +2,7 @@
 <div class="home">
   <app-header></app-header>
 
-  <div class="previews">
+  <div class="previews content">
     <div class="preview" v-for="resume in resumeList" :key="resume.name">
       <router-link v-bind:to="`/resume/${resume.name}`">
         <div class="preview-wrapper">
@@ -52,6 +52,9 @@ export default Vue.component('resume', {
   font-family: 'Roboto' !important;
 }
 
+.content {
+  margin: 20px;
+}
 .previews {
   width: 90%;
   margin-right: auto;

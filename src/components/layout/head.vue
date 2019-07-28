@@ -1,11 +1,15 @@
 <template>
   <div class="header">
+    <img src="../../assets/logo.png" class="logo" />
     <span class="title">快简历</span>
     <nav>
-      <router-link to="/">
+      <router-link to="/" active-class="link_active" exact>
         <span>模板</span>
       </router-link>
-      <router-link to="/data">
+      <router-link to="/custom" active-class="link_active">
+        <span>自定义</span>
+      </router-link>
+      <router-link to="/data" active-class="link_active">
         <span>数据</span>
       </router-link>
     </nav>
@@ -23,10 +27,8 @@ export default Vue.component("head", {
 .header {
   display: flex;
   align-items: center;
-
   background: #098ac7;
   height: 40px;
-  margin-bottom: 40px;
   padding: 10px 30px;
 }
 .title {
@@ -36,14 +38,21 @@ export default Vue.component("head", {
 }
 nav {
   display: flex;
-  margin-left: 40px; 
+  margin-left: 40px;
 }
 nav a {
-    text-decoration: none;
-     color: #ddd;
+  text-decoration: none;
+  color: #ddd;
   font-size: 20px;
 }
 nav span {
   margin-right: 20px;
+}
+.link_active {
+  color: white;
+}
+.logo {
+  width: 30px;
+  margin-right: 10px;
 }
 </style>
