@@ -83,7 +83,7 @@
       <!-- skill -->
       <div class="item last" v-if="template_config.skill.is_show">
         <div class="section-headline">{{ lang.skills }}</div>
-        <skill-template-1 v-bind:data="person.skills"></skill-template-1>
+        <component  v-bind:data="person.skills" :is="skillTemplate"></component>
       </div>
     </div>
 
@@ -153,7 +153,9 @@ export default Vue.component(name, {
     };
   },
    components: {
-    skillTemplate1,
+     skillTemplate: {
+       template: require("../components/skill/template1.vue")
+     },
     experienceTemplate1,
     educationTemplate1
   },
