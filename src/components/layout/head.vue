@@ -3,7 +3,7 @@
     <img src="../../assets/logo.png" class="logo" />
     <span class="title">快简历</span>
     <nav>
-      <router-link to="/" active-class="link_active" exact>
+      <router-link to="/resume" active-class="link_active" exact>
         <span>模板</span>
       </router-link>
       <router-link to="/custom" active-class="link_active">
@@ -34,22 +34,24 @@ export default Vue.component("head", {
 .title {
   color: white;
   font-weight: 300;
-  font-size: 25px;
+  font-size: 20px;
 }
 nav {
   display: flex;
   margin-left: 40px;
+  align-items: baseline;
 }
 nav a {
   text-decoration: none;
   color: #ddd;
-  font-size: 20px;
+  font-size: 18px;
 }
 nav span {
   margin-right: 20px;
 }
 .link_active {
   color: white;
+  font-size: 20px;
 }
 .logo {
   width: 30px;

@@ -4,7 +4,7 @@
     <div class="content flex_wrapper">
       <div class="input">
         <h4>更新简历信息：</h4>
-        <textarea v-model="resume_data" rows="40" placeholder="add multiple lines"></textarea>
+        <textarea v-model="resume_data" rows="40"></textarea>
         <div class="info">
           <li>请按照样例中的格式更新简历信息，不要加key，不需要的key可以不写</li>
           <li>简历信息会保存在本地缓存中，清空缓存前建议保存信息</li>

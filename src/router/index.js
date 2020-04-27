@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Resume from '@/pages/resume';
+import Intro from '@/pages/intro';
 import Home from '@/pages/home';
 import Custom from '@/pages/custom';
 import Data from '@/pages/data';
@@ -11,6 +12,11 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'intro',
+      component: Intro
+    },
+    {
+      path: '/resume',
       name: 'home',
       component: Home
     },

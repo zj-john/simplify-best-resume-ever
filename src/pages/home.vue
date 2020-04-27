@@ -11,11 +11,10 @@
         </div>
       </router-link>
     </div>
-    <div class="preview">
+    <div class="preview bg-white">
       <router-link v-bind:to="'/custom'">
         <div class="preview-wrapper">
-          <img src="../assets/preview/resume-left-right-rtl.png" />
-          <span>自定义模板</span>
+          <span>不满意?<br/>试试自定义模板</span>
         </div>
       </router-link>
     </div>
@@ -40,7 +39,8 @@ export default Vue.component('resume', {
         {'name': 'side-bar'},
         {'name': 'purple'},
         {'name': 'left-right-rtl'},
-        {'name': 'side-bar-rtl'}
+        {'name': 'side-bar-rtl'},
+        {'name': 'frontend'}
       ]
     };
   }
@@ -94,5 +94,14 @@ export default Vue.component('resume', {
   display: inline-block;
   top: 50%;
   transform: translateY(-50%);
+}
+.bg-white  {
+  background-color: white;
+}
+.bg-white .preview-wrapper {
+  height: 100%;
+}
+.bg-white .preview-wrapper span {
+  font-size: 18px;
 }
 </style>
