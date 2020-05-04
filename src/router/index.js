@@ -5,10 +5,11 @@ import Intro from '@/pages/intro';
 import Home from '@/pages/home';
 import Custom from '@/pages/custom';
 import Data from '@/pages/data';
+import Main from '@/pages/main';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -33,7 +34,9 @@ export default new Router({
     {
       path: '/data',
       name: 'data',
-      component: Data
+      component: Main
     }
   ]
 });
+
+export default router;

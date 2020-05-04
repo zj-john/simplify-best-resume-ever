@@ -1,7 +1,5 @@
 <template>
 <div class="home">
-  <app-header></app-header>
-
   <div class="previews content">
     <div class="preview" v-for="resume in resumeList" :key="resume.name">
       <router-link v-bind:to="`/resume/${resume.name}`">
@@ -11,24 +9,22 @@
         </div>
       </router-link>
     </div>
-    <div class="preview bg-white">
+    <!-- <div class="preview bg-white">
       <router-link v-bind:to="'/custom'">
         <div class="preview-wrapper">
           <span>不满意?<br/>试试自定义模板</span>
         </div>
       </router-link>
-    </div>
+    </div> -->
   </div>
 </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import appHeader from '@/components/layout/head';
 export default Vue.component('resume', {
   name: 'app',
-  components: {
-    appHeader
+  components: {    
   },
   data: function () {
     return {

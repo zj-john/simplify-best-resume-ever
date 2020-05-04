@@ -3,15 +3,22 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import store from './store';
 
 Vue.config.productionTip = false;
 
+router.beforeEach((to, from, next) => {
+  if (to.name == 'resume') {
+    store.dispatch('setLayout', false)
+  } else {
+    store.dispatch('setLayout', true)
+  }
+  next();
+})
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  template: '<App/>',
-  components: {
-    App
-  }
+  store,
+  render: h => h(App)
 });

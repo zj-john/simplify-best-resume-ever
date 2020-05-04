@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <app-header></app-header>
     <div class="content flex_wrapper">
       <div class="input">
         <h4>更新简历信息：</h4>
@@ -17,15 +16,11 @@
         <pre class="scroll">{{ resume_data }}</pre>
       </div>
     </div>
-
-    <!-- <app-footer></app-footer> -->
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import appHeader from "@/components/layout/head";
-import appFooter from "@/components/layout/foot";
 import {
   getLocalstorage,
   setLocalstorage,
@@ -35,8 +30,6 @@ import * as INITDATA from "../../resume/data.json";
 export default Vue.component("custom", {
   name: "app",
   components: {
-    appHeader,
-    appFooter
   },
   data: function() {
     return {

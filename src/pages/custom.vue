@@ -1,7 +1,5 @@
 <template>
   <div class="home">
-    <app-header></app-header>
-
     <div class="content flex_wrapper">
       <div class="smart-timeline custom_form">
         <ul class="smart-timeline-list">
@@ -54,20 +52,14 @@
       </div>
       <div class="resume_demo"></div>
     </div>
-
-    <!-- <app-footer></app-footer> -->
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import appHeader from "@/components/layout/head";
-import appFooter from "@/components/layout/foot";
 export default Vue.component("custom", {
   name: "app",
   components: {
-    appHeader,
-    appFooter
   },
   data: function() {
     return {

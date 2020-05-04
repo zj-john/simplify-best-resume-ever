@@ -1,16 +1,18 @@
 <template>
   <div class="header">
     <img src="../../assets/logo.png" class="logo" />
-    <span class="title">快简历</span>
-    <nav>
+    <router-link to="/" exact style="text-decoration: none;">
+      <span class="title">快简历</span>
+    </router-link>
+    <nav>      
+      <!-- <router-link to="/custom" active-class="link_active">
+        <span>自定义</span>
+      </router-link> -->
+      <router-link to="/data" active-class="link_active">
+        <span>简历</span>
+      </router-link>
       <router-link to="/resume" active-class="link_active" exact>
         <span>模板</span>
-      </router-link>
-      <router-link to="/custom" active-class="link_active">
-        <span>自定义</span>
-      </router-link>
-      <router-link to="/data" active-class="link_active">
-        <span>数据</span>
       </router-link>
     </nav>
   </div>

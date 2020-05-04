@@ -11,20 +11,23 @@ function getVueOptions (name) {
     name: name,
     data () {
       return {
-        person: null,
+        // person: this.$store.state.resumeData,
         terms: terms
       };
     },
     created: function() {
       // storage
-      let _data = getLocalstorage("resume_data");
-      if (_data) {
-        this.person = JSON.parse(_data);
-      } else {
-        this.person = PERSON;
-      }
+      // let _data = getLocalstorage("resume_data");
+      // if (_data) {
+      //   this.person = JSON.parse(_data);
+      // } else {
+      //   this.person = PERSON;
+      // }
     },
     computed: {
+      person() {
+        return JSON.parse(this.$store.state.resumeData)
+      },
       lang () {
         const defaultLang = this.terms.en;
         const useLang = this.terms[this.person.lang];

@@ -1,50 +1,49 @@
 <template>
   <div class="intro page-wrapper">
-    <app-header></app-header>
-    <article>
-      <div>
+    <div class="come-in" @click="linkto">制作简历 ></div>
+    <div class="scroll-banner-wrapper">
+      <article>
         <div>
-          <p class="title">模板持续更新，完全免费使用</p>
-          <p class="desc">包含各类模板20+，适用于各个行业</p>
+          <div>
+            <p class="title">模板持续更新，完全免费使用</p>
+            <p class="desc">包含各类模板20+，适用于各个行业</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <img src="../assets/logo.png" />
-      </div>
-    </article>
-    <article>
-      <div>
-        <img src="../assets/logo.png" />
-      </div>
-      <div>
         <div>
-          <p class="title">模板持续更新，完全免费使用</p>
-          <p class="desc">包含各类模板20+，适用于各个行业</p>
+          <img src="../assets/logo.png" />
         </div>
-      </div>
-    </article>
-    <article>
-      <div>
+      </article>
+      <article>
         <div>
-          <p class="title">模板持续更新，完全免费使用</p>
-          <p class="desc">包含各类模板20+，适用于各个行业</p>
+          <div>
+            <p class="title">模板持续更新34，完全免费使用</p>
+            <p class="desc">包含各类模板20+，适用于各个行业</p>
+          </div>
         </div>
-      </div>
-      <div>
-        <img src="../assets/logo.png" />
-      </div>
-    </article>
+        <div>
+          <img src="../assets/logo.png" />
+        </div>
+      </article>
+      <article>
+        <div>
+          <div>
+            <p class="title">模板持续更新12，完全免费使用</p>
+            <p class="desc">包含各类模板20+，适用于各个行业</p>
+          </div>
+        </div>
+        <div>
+          <img src="../assets/logo.png" />
+        </div>
+      </article>
+    </div>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
-import appHeader from "@/components/layout/head";
 export default Vue.component("resume", {
   name: "app",
-  components: {
-    appHeader
-  },
+  components: {},
   data: function() {
     return {
       resumeList: [
@@ -57,15 +56,70 @@ export default Vue.component("resume", {
         { name: "side-bar-rtl" }
       ]
     };
+  },
+  methods: {
+    linkto: function() {
+      console.log("linkto");
+      this.$router.push("/data");
+    }
   }
 });
 </script>
 
 <style scoped>
-article {
-  height: 400px;
-  width: 100%;
+.intro {
+  position: relative;
+}
+.come-in {
+  position: absolute;
+  border: 2px solid #098ac7;
+  border-radius: 20px;
+  width: 180px;
+  height: 50px;
+  font-size: 24px;
+  line-height: 1.5em;
+  bottom: 100px;
+  right: 150px;
+  z-index: 999;
+  /* text-align: center; */
+  /* vertical-align: middle; */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.scroll-banner-wrapper {
+  height: 100%;
+  width: 100vw;
+  /* overflow: hidden; */
+  display: flex;
+  flex-wrap: nowrap;
+  /* transform: translateX(-100vw);
+  transition: 3s ease; */
+  animation-name: slide;
+  animation-duration: 12s;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(3, end);
+}
+@keyframes slide {
+  from {
+    transform: translateX(0px);
+  }
+
+  to {
+    transform: translateX(-300vw);
+  }
+}
+main:hover .scroll-banner-wrapper {
+  animation-play-state: paused;
+}
+/* main:hover .intro>.come-in {
+  animation-play-state: running
+} */
+article {
+  width: 100vw;
+  display: flex;
+  flex-shrink: 0;
 }
 
 article > div {
