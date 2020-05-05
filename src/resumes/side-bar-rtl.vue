@@ -5,7 +5,7 @@
             {{person.name.cn}} {{person.name.en}}
           </span>
           <span class="person-position">
-            {{person.position}}
+            {{person.current.position}}
           </span>
       </div>
       <div class="right-col">
@@ -25,7 +25,7 @@
                   <i class="fa fa-circle" aria-hidden="true"></i>
               </div>
               <div class="contact-row">
-                  <a href="'tel:'+person.contact.phone">{{person.contact.phone}}</a>
+                  <a href="'tel:'+person.contact.tel">{{person.contact.tel}}</a>
               </div>
               <div class="contact-row dots">
                   <i class="fa fa-circle" aria-hidden="true"></i>
@@ -54,7 +54,7 @@
                           <span class="job-title"> {{experience.position}} </span>
                       </div>
                       <div class="row">
-                          <span class="time-period"> {{experience.timeperiod}}</span>
+                          <span class="time-period"> {{experience.time_from}} {{experience.time_to}}</span>
                       </div>
                       <div class="row">
                           <span class="job-description"> {{experience.description}} </span>
@@ -75,11 +75,11 @@
           <div class="skills-block">
               <h3>{{ lang.skills }}</h3>
               <div class="skills">
-                      <div class="skill" v-for="skill in person.skills">
+                      <div class="skill" v-for="skill in person.skill_scores">
                           <span class="skill-name">{{skill.name}}</span>
                       </div>
               </div>
-              <span class="skills-other"> {{person.knowledge}} </span>
+              <span class="skills-other"> {{person.skill_description}} </span>
           </div>
       </div>
   </div>

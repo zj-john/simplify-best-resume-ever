@@ -21,6 +21,7 @@
     "raleway-webfont": "3.0.1",
     "roboto-fontface": "0.9.0",
     "source-sans-pro": "2.0.10",
+    "v-jsoneditor": "^1.4.1",
     "vue": "2.5.13",
     "vue-router": "3.0.1",
     "vuex": "^3.3.0"

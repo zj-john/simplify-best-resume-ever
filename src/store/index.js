@@ -16,14 +16,15 @@ const resumeList = [
     { 'name': 'purple' },
     { 'name': 'left-right-rtl' },
     { 'name': 'side-bar-rtl' },
-    { 'name': 'frontend' }
+    { 'name': 'web-frontend' }
 ];
 
 const store = new Vuex.Store({
     state: {
         resumeList: resumeList,
         layoutShow: true,
-        resumeData: null
+        resumeData: null,
+        currentResumeIndex:-1
     },
     actions: {
         setLayout(context, data) {
@@ -47,6 +48,12 @@ const store = new Vuex.Store({
             context.commit('init', {
                 key: 'resumeData',
                 value: JSON.stringify(INITDATA, null, 4)
+            })
+        },
+        setCurrentResumeIndex(context,data) {
+            context.commit('init', {
+                key: 'currentResumeIndex',
+                value: data
             })
         }
     },

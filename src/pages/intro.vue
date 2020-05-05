@@ -59,7 +59,6 @@ export default Vue.component("resume", {
   },
   methods: {
     linkto: function() {
-      console.log("linkto");
       this.$router.push("/data");
     }
   }

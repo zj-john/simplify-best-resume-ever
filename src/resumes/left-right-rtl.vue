@@ -4,7 +4,7 @@
     <span class="name">{{person.name.cn}} {{person.name.en}}</span>
   </div>
   <div class="row text-center">
-    <p class="position center">{{person.position}}</p>
+    <p class="position center">{{person.current.position}}</p>
   </div>
   <div class="row">
     <div class="image center">
@@ -17,7 +17,7 @@
       <div class="experience-block" v-for="experience in person.experience" :key="experience.company">
         <span class="company"> {{experience.company}} </span>
         <span class="job-title"> {{experience.position}} </span>
-        <span class="time-period"> {{experience.timeperiod}}</span>
+        <span class="time-period"> {{experience.time_from}} {{experience.time_to}}</span>
         <span class="job-description"> {{experience.description}} </span>
       </div>
     </div>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <td><i class="fa fa-phone" aria-hidden="true"></i></td>
-          <td><a :href="'tel:'+person.contact.phone">{{person.contact.phone}}</a></td>
+          <td><a :href="'tel:'+person.contact.tel">{{person.contact.tel}}</a></td>
         </tr>
         <tr v-if="person.contact.website">
           <td><i class="fa fa-globe" aria-hidden="true"></i></td>
@@ -53,14 +53,14 @@
     </div>
     <h3>{{ lang.skills }}</h3>
     <div class="skills">
-      <div class="skill-block" v-for="skill in person.skills" :key="skill.name">
+      <div class="skill-block" v-for="skill in person.skill_scores" :key="skill.name">
         <span class="skill">{{skill.name}}</span>
         <div class="skill-bar">
           <div :style="'width: '+skill.level+'%'" class="level"> </div>
         </div>
       </div>
     </div>
-    <span class="skills-other"> {{person.skillDescription}} </span>
+    <span class="skills-other"> {{person.skill_description}} </span>
   </div>
 </div>
 </template>

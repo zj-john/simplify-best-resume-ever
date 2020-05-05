@@ -4,7 +4,7 @@
     <span class="name">{{person.name.cn}} {{person.name.en}}</span>
   </div>
   <div class="row text-center">
-    <p class="position center">{{person.position}}</p>
+    <p class="position center">{{person.current.position}}</p>
   </div>
   <div class="row">
     <div class="image center">
@@ -29,7 +29,7 @@
           <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
         </tr>
         <tr>
-          <td><a :href="'tel:'+person.contact.phone">{{person.contact.phone}}</a></td>
+          <td><a :href="'tel:'+person.contact.tel">{{person.contact.tel}}</a></td>
           <td><i class="fa fa-phone" aria-hidden="true"></i></td>
         </tr>
         <tr v-if="person.contact.website">
@@ -53,14 +53,14 @@
     </div>
     <h3>{{ lang.skills }}</h3>
     <div class="skills">
-      <div class="skill-block" v-for="skill in person.skills" :key="skill.name">
+      <div class="skill-block" v-for="skill in person.skill_scores" :key="skill.name">
         <span class="skill">{{skill.name}}</span>
         <div class="skill-bar">
           <div :style="'width: '+skill.level+'%'" class="level"> </div>
         </div>
       </div>
     </div>
-    <span class="skills-other"> {{person.knowledge}} </span>
+    <span class="skills-other"> {{person.skill_description}} </span>
   </div>
 </div>
 </template>

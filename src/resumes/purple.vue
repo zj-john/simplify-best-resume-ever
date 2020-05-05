@@ -2,12 +2,12 @@
 <div class="resume" id="template">
     <div id="resume-header">
         <div id="header-left">
-            <h2 id="position">{{person.position}}</h2>
+            <h2 id="position">{{person.current.position}}</h2>
             <h1 id="name">{{person.name.cn}} {{person.name.en}}</h1>
             <div id="info-flex">
                 <span id="email"><a :href='"mailto:" + person.contact.email'>
                   <i class="fa fa-envelope" aria-hidden="true"></i> {{person.contact.email}}</a></span>
-                <span id="phone"><i class='fa fa-phone-square' aria-hidden="true"></i> {{person.contact.phone}}</span>
+                <span id="phone"><i class='fa fa-phone-square' aria-hidden="true"></i> {{person.contact.tel}}</span>
                 <span v-if="person.contact.website" id="website"><a :href='person.contact.website'><i class="fa fa-home" aria-hidden="true"></i> {{person.contact.website}}</a></span>
                 <span v-if="person.contact.github" id="github"><a :href='"https://github.com/" + person.contact.github'><i class="fa fa-github" aria-hidden="true"></i> {{person.contact.github}}</a></span>
             </div>
@@ -46,7 +46,7 @@
             <div class="spacer"></div>
             <p id="skill-description">{{person.knowledge}}</p>
             <ul id="skill-list">
-                <li class="skill" v-for="skill in person.skills" :key="skill.name">
+                <li class="skill" v-for="skill in person.skill_scores" :key="skill.name">
                   <span class="list-item-black">
                     {{skill.name}}
                   </span>
@@ -55,9 +55,9 @@
         </div>
     </div>
     <div id="resume-footer">
-        <div v-if="person.about">
+        <div v-if="person.description">
             <h2>{{ lang.about }}</h2>
-            <p>{{person.about}}</p>
+            <p>{{person.description}}</p>
         </div>
     </div>
 </div>

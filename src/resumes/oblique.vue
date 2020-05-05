@@ -6,7 +6,7 @@
       <div class="person-wrapper">
         <div class="person">
           <div class="name">{{person.name.cn}} {{person.name.en}}</div>
-          <div class="position">{{person.position}}</div>
+          <div class="position">{{person.current.position}}</div>
         </div>
         <div class="img">
         </div>
@@ -17,7 +17,6 @@
   <div class="resume-content">
     <div class="experience">
       <h3>{{ lang.experience }}</h3>
-
       <div class="experience-block" v-for="experience in person.experience" :key="experience.company">
         <div class="row">
           <span class="job-title"> {{experience.position}} </span>
@@ -26,7 +25,7 @@
         </div>
 
         <div class="row">
-          <span class="time-period"> {{experience.timeperiod}}</span>
+          <span class="time-period"> {{experience.time_from}} {{experience.time_to}}</span>
           <span class="job-description">, {{experience.description}} </span>
         </div>
       </div>
@@ -44,7 +43,7 @@
     </div>
     <div class="skill-section">
       <h3>{{ lang.skills }}</h3>
-      <div class="skills" v-for="skill in person.skills" :key="skill.name">
+      <div class="skills" v-for="skill in person.skill_scores" :key="skill.name">
         <div class="skill-block">
           <i class="fa fa-sort-down" aria-hidden="true"></i>
           <span class="skill">{{skill.name}}</span>
@@ -58,7 +57,7 @@
       <h3>{{ lang.contact }}</h3>
       <a :href="'mailto:'+person.contact.email"> {{person.contact.email}}</a>
       <span>;&nbsp;</span>
-      <a :href="'tel:'+person.contact.phone">{{person.contact.phone}}</a>
+      <a :href="'tel:'+person.contact.tel">{{person.contact.tel}}</a>
       <span>;&nbsp;</span>
       <span>{{person.contact.city}}</span>
       <span>;&nbsp;</span>

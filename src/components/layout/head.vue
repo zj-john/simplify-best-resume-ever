@@ -30,12 +30,12 @@ export default Vue.component("head", {
   display: flex;
   align-items: center;
   background: #098ac7;
-  height: 40px;
+  /* height: 40px; */
   padding: 10px 30px;
 }
 .title {
   color: white;
-  font-weight: 300;
+  /* font-weight: 300; */
   font-size: 20px;
 }
 nav {
@@ -53,7 +53,7 @@ nav span {
 }
 .link_active {
   color: white;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 .logo {
   width: 30px;

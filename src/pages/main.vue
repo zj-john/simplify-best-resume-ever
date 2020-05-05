@@ -4,7 +4,7 @@
       <div class="card-title">
         <div class="title">个人数据</div>
         <div class="action">
-          <button class="btn btn-primary btn-sm" @click="saveData" title="保存至本地缓存">保存</button>
+          <!-- <button class="btn btn-primary btn-sm" @click="saveData" title="保存至本地缓存">保存</button> -->
           <button class="btn btn-info btn-sm" @click="reInit" title="恢复至样例数据">还原</button>
         </div>
       </div>
@@ -30,10 +30,7 @@
         </div>
         <div class>
           <div class="page-wrapper">
-            <cv-page
-              :resume-name="resumeList[currentCvIndex].name"
-              style="border:1px solid #ccc"
-            />
+            <cv-page :resume-name="resumeList[currentCvIndex].name" style="border:1px solid #ccc" />
           </div>
         </div>
       </div>
@@ -63,7 +60,16 @@ export default {
       return this.$store.state.resumeList;
     }
   },
-  created: function() {},
+  created: function() {
+    console.log("resume", this.$route.params.resumeid);
+    let index = 0;
+    if (this.$route.params.resumeid) {
+      index = this.resumeList.findIndex(item => {
+        return item.name == this.$route.params.resumeid;
+      });
+    }
+    this.currentCvIndex = index
+  },
   mounted: function() {},
   methods: {
     saveData: function(data) {
@@ -106,13 +112,15 @@ export default {
 .wrapper {
   display: flex;
   margin: 15px;
+  flex-wrap: wrap;
 }
 .data-wrapper,
 .cv-wrapper {
   flex-basis: 50%;
   overflow: auto;
   /* padding: 10px; */
-  box-sizing: content-box;
+  /* box-sizing: content-box; */
+  box-sizing: border-box;
 }
 .data-wrapper {
   border-right: 15px solid #cccccc;
@@ -121,6 +129,7 @@ export default {
   background-color: white;
   box-shadow: 1px 1px 1px #ccc, -1px -1px 1px #ccc;
   min-height: 600px;
+  min-width: 550px;
 }
 .card-title {
   border-bottom: 1px solid #ccc;

@@ -24,18 +24,18 @@
       </div>
       <div class="text">
         <ul>
-          <li>{{person.contact.city}}</li>
+          <li>{{person.current.city}}</li>
         </ul>
       </div>
     </div>
 
-    <a :href="'tel:'+person.contact.phone">
+    <a :href="'tel:'+person.contact.tel">
       <div class="item">
         <div class="icon">
           <i class="fa fa-phone" aria-hidden="true"></i>
         </div>
         <div class="text">
-          {{person.contact.phone}}
+          {{person.contact.tel}}
         </div>
       </div>
     </a>
@@ -78,7 +78,7 @@
       <div class="section-headline">
         {{ lang.skills }}
       </div>
-      <div class="skill" v-for="skill in person.skills" :key="skill.name">
+      <div class="skill" v-for="skill in person.skill_scores" :key="skill.name">
         <div class="right">
           <span>{{skill.name}}&nbsp;</span>
           <div class="progress">
@@ -94,14 +94,14 @@
   <div class="rightCol">
     <div class="title">
       <h2>{{person.name.cn}} {{person.name.en}}</h2>
-      <div>{{person.position}}</div>
+      <div>{{person.current.position}}</div>
     </div>
 
     <div class="section-headline">{{ lang.experience }}</div>
     <div class="block" v-for="experience in person.experience" :key="experience.company">
       <div class="block-helper"></div>
       <h3 class="headline">{{experience.position}} - {{experience.company}}</h3>
-        <div class="subheadline">{{experience.timeperiod}}</div>
+        <div class="subheadline">{{experience.time_from}} {{experience.time_to}}</div>
         <p class="info">
           {{experience.description}}
         </p>
@@ -111,7 +111,7 @@
       <div class="block-helper"></div>
       <div class="headline">{{education.degree}}</div>
       <p class="info">
-        {{education.timeperiod}}, {{education.description}}
+        {{education.time_from}} {{education.time_to}}, {{education.description}}
       </p>
     </div>
   </div>

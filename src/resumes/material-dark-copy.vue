@@ -117,9 +117,9 @@ import Vue from "vue";
 import * as PERSON from "../../resume/data.json";
 import { terms } from "../terms";
 import { getLocalstorage } from "@/services/utils.js";
-import skillTemplate1 from "@/components/skill/template1.vue";
-import experienceTemplate1 from "@/components/experience/template1.vue";
-import educationTemplate1 from "@/components/education/template1.vue";
+import skillTemplate1 from "@/components/resume/skill/template1.vue";
+import experienceTemplate1 from "@/components/resume/experience/template1.vue";
+import educationTemplate1 from "@/components/resume/education/template1.vue";
 let name = "material-dark-copy";
 
 export default Vue.component(name, {
@@ -154,7 +154,7 @@ export default Vue.component(name, {
   },
    components: {
      skillTemplate: {
-       template: require("../components/skill/template1.vue")
+       template: require("../components/resume/skill/template1.vue")
      },
     experienceTemplate1,
     educationTemplate1

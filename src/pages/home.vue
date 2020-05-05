@@ -2,12 +2,16 @@
 <div class="home">
   <div class="previews content">
     <div class="preview" v-for="resume in resumeList" :key="resume.name">
-      <router-link v-bind:to="`/resume/${resume.name}`">
+      <!-- <router-link v-bind:to="`/resume/${resume.name}`"> -->
         <div class="preview-wrapper">
           <img :src="require(`../assets/preview/resume-${resume.name}.png`)" />
           <span>{{ resume.name }}</span>
         </div>
-      </router-link>
+        <div class="action">
+          <button class="btn btn-info btn-sm" @click="preview(resume.name)">预览</button>
+          <button class="btn btn-primary btn-sm" @click="select(resume.name)">选择</button>
+        </div>
+      <!-- </router-link> -->
     </div>
     <!-- <div class="preview bg-white">
       <router-link v-bind:to="'/custom'">
@@ -36,9 +40,32 @@ export default Vue.component('resume', {
         {'name': 'purple'},
         {'name': 'left-right-rtl'},
         {'name': 'side-bar-rtl'},
-        {'name': 'frontend'}
+        {'name': 'web-frontend'}
       ]
     };
+  },
+  methods: {
+    preview: function(name) {
+      let routeData = this.$router.resolve({
+        name: "resume",
+        params: { resumeid: name }
+      });
+      window.open(routeData.href, "_blank");
+    },
+    select: function(name) {
+      // let routeData = this.$router.resolve({
+      //   name: "data",
+      //   params: { resumeid: name }
+      // });
+      // window.open(routeData.href, "_blank");
+      // this.$router.push("/data", {params: { resumeid: name }})
+      this.$router.push({
+          name: 'data',
+          params: {
+            resumeid: name
+          }
+        })
+    }
   }
 });
 </script>
@@ -49,7 +76,7 @@ export default Vue.component('resume', {
 }
 
 .content {
-  margin: 20px;
+  padding: 20px;
 }
 .previews {
   width: 90%;
@@ -58,8 +85,10 @@ export default Vue.component('resume', {
 }
 
 .preview {
+  position: relative;
   width: 180px;
   float: left;
+  margin-top: 1.5%;
   margin-left: 1.5%;
   margin-right: 1.5%;
   margin-bottom: 1.5%;
@@ -67,7 +96,24 @@ export default Vue.component('resume', {
   height: 252px;
   overflow: hidden;
 }
-
+.preview:hover {
+  transform: scale(1.2);
+  transform-origin: 50% 50%;
+}
+.preview:hover img {
+  filter: blur(0);
+  opacity: 1;
+}
+.action {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+.preview:hover .action {
+  display: flex;
+  justify-content: space-evenly;
+}
 .preview-wrapper {
   position: relative;
   background: white;
