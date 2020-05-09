@@ -10,7 +10,8 @@
       </div>
       <div class="card-content">
         <template>
-          <data-json :data="resume_data" @save="saveData" />
+          <!-- <data-json :data="resume_data" @save="saveData" /> -->
+          <data-json-shard :data="resume_data" @save="saveData" />
         </template>
         <!-- <template></template> -->
       </div>
@@ -40,6 +41,7 @@
 
 <script>
 import dataJson from "@/components/views/dataJson.vue";
+import dataJsonShard from "@/components/views/dataJsonShard.vue";
 import cvPage from "@/components/views/cvPage.vue";
 import * as INITDATA from "../../resume/data.json";
 import "../resumes/resumes";
@@ -47,7 +49,8 @@ import { dateFormat } from "@/services/utils.js";
 export default {
   components: {
     dataJson,
-    cvPage
+    cvPage,
+    dataJsonShard
   },
   data: function() {
     return {

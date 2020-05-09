@@ -4,7 +4,7 @@ import Resume from '@/pages/resume';
 import Intro from '@/pages/intro';
 import Home from '@/pages/home';
 import Custom from '@/pages/custom';
-import Data from '@/pages/data';
+// import Data from '@/pages/data';
 import Main from '@/pages/main';
 
 Vue.use(Router);
