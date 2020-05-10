@@ -1,81 +1,109 @@
 <template>
   <div>
-    <div v-for="item in cv_keys" :key="item">
-      <span></span>
-      <v-jsoneditor
-        v-model="json_data"
-        :options="options"
-        :plus="true"
-        height="1200px"
-        @error="onError"
-      />
-    </div>
+    <Collapse v-model="collapse_value" :simple="false">
+      <Panel :name="String(index+1)" v-for="(item,index) in Object.keys(cv_parts)" :key="item">
+        {{cv_part_desc[item]}}
+        <small
+          v-if="cv_parts[item].allow_not_show"
+        >（{{cv_parts[item].is_active?'已启用':'未启用'}}）</small>
+        <div slot="content">
+          <Card :bordered="true" dis-hover>
+            <div slot="title" class="card_title" v-if="cv_parts[item].allow_not_show">
+              <div v-if="cv_parts[item].allow_not_show">
+                {{cv_parts[item].is_active?'开启':'关闭'}}
+                <i-switch
+                  size="small"
+                  v-model="cv_parts[item].is_active"
+                  @on-change="(status) => switchChange(status, item)"
+                />
+              </div>
+              <div>
+                <!-- <Button type="primary" shape="circle" icon="ios-add" size="small" v-if="cv_parts[item].content_type == 'array'"></Button> -->
+              </div>
+            </div>
+            <v-jsoneditor
+              v-model="json_data[item]"
+              :options="cv_parts[item].options"
+              :plus="true"
+              @error="onError"
+            />
+          </Card>
+        </div>
+      </Panel>
+    </Collapse>
   </div>
 </template>
 
 <script>
 import VJsoneditor from "v-jsoneditor/src/index";
-import json_data from "../../../resume/datav2.json";
+import { terms } from "../../terms";
 export default {
   props: ["data"],
   components: {
     VJsoneditor
   },
   data: function() {
+    const lang = "cn";
     return {
       // https://github.com/josdejong/jsoneditor/blob/master/docs/api.md#configuration-options
       // json-scheme-form https://github.com/vue-generators/vue-form-generator
       // https://vuejsfeed.com/blog/generate-forms-using-json-schema-and-vue-js
-      options: {
-        mode: "text",
-        name: "CV",
-        onChangeText: str => this.onChangeText(str)
-      },
-      jsonData: JSON.parse(this.data),
-      json_data: json_data,
-      cv_keys: []
+      // options: {
+      //   mode: "text",
+      //   name: "CV",
+      //   onChangeText: str => this.onChangeText(str)
+      // },
+      // json_data: JSON.parse(this.data),
+      // json_data: json_data,
+      // 当前cv的内容
+      cv_parts: Object.assign({}, JSON.parse(this.$store.state.userCvPartsConfig)),
+      // collapse 展开的内容
+      collapse_value: 1,
+      // collapse_value: [...(new Array(Object.keys(this.$store.state.userCvPartsConfig).length)).keys()],
+      // 根据语言确定各部分的描述
+      cv_part_desc: terms[lang]
     };
   },
   computed: {
-    // jsonData: function() {
-    //   return JSON.parse(this.data)
-    // }
+    json_data: function() {
+      return JSON.parse(this.data)
+    }
   },
-  created: function() {},
+  created: function() {
+    let cv_parts = {};
+    Object.keys(this.cv_parts).forEach(k => {
+      cv_parts[k] = Object.assign(this.cv_parts[k], {
+        options: {
+          mode: "text",
+          name: this.cv_part_desc[k],
+          onChangeText: str => this.onChangeText(k,str)
+        }
+      })
+    })
+    this.cv_parts = cv_parts;
+  },
   mounted: function() {},
   methods: {
     onError(e) {
-      console.log("error", e);
+    //   console.log("error", e);
+    //   this.$Message.info("JSON Error:" + e)
     },
-    onChangeText(jsonString) {
-      this.$emit("save", jsonString);
+    onChangeText(key, jsonString) {
+      this.json_data[key] = JSON.parse(jsonString);
+      this.$emit("save", this.json_data);
+    },
+    switchChange(status, item) {
+        // console.log(status, item);
+    //   this.$Message.info("开关状态：" + status);
     }
   }
 };
 </script>
 
 <style scoped>
-textarea {
-  width: 100%;
-  border: none;
-  font-size: 12px;
-  line-height: 1.5em;
-  color: #f5f5f5;
-  background-color: #333;
-  border-radius: 2px;
-}
-pre {
-  white-space: pre-wrap;
-  display: block;
-  padding: 8.5px;
-  margin: 0 0 9px;
-  font-size: 12px;
-  line-height: 1.42857143;
-  word-break: break-all;
-  word-wrap: break-word;
-  color: #f5f5f5;
-  background-color: #333;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+.card_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 </style>

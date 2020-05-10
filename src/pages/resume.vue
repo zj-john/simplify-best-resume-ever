@@ -1,7 +1,7 @@
 <template>
   <div class="page-wrapper">
     <div class="print">
-      <button class="btn btn-primary" @click="print">打印为PDF</button>
+      <Button type="primary" @click="print" size="small" title="">打印为PDF</Button>
     </div>
     <div class="page" :id="$route.params.resumeid">
       <div class="page-inner">

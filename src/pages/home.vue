@@ -1,47 +1,39 @@
 <template>
-<div class="home">
-  <div class="previews content">
-    <div class="preview" v-for="resume in resumeList" :key="resume.name">
-      <!-- <router-link v-bind:to="`/resume/${resume.name}`"> -->
-        <div class="preview-wrapper">
-          <img :src="require(`../assets/preview/resume-${resume.name}.png`)" />
-          <span>{{ resume.name }}</span>
-        </div>
-        <div class="action">
-          <button class="btn btn-info btn-sm" @click="preview(resume.name)">预览</button>
-          <button class="btn btn-primary btn-sm" @click="select(resume.name)">选择</button>
-        </div>
-      <!-- </router-link> -->
-    </div>
-    <!-- <div class="preview bg-white">
+  <div class="home">
+    <div class="previews content">
+      <Row type="flex" align="middle">
+        <Col span="4" v-for="resume in resumeList" :key="resume.name" class="preview">
+          <div class="cv_item">
+            <div class="preview-wrapper">
+              <img :src="require(`../assets/preview/resume-${resume.name}.png`)" />
+              <!-- <span>{{ resume.name }}</span> -->
+            </div>
+            <div class="action">
+              <Button type="info" @click="preview(resume.name)" size="small">预览</Button>
+              <Button type="primary" @click="select(resume.name)" size="small">选择</Button>
+            </div>
+          </div>
+        </Col>
+      </Row>
+      <!-- <div class="preview bg-white">
       <router-link v-bind:to="'/custom'">
         <div class="preview-wrapper">
           <span>不满意?<br/>试试自定义模板</span>
         </div>
       </router-link>
-    </div> -->
+      </div>-->
+    </div>
   </div>
-</div>
 </template>
 
 <script>
-import Vue from 'vue';
-export default Vue.component('resume', {
-  name: 'app',
-  components: {    
-  },
-  data: function () {
+import Vue from "vue";
+export default Vue.component("resume", {
+  name: "app",
+  components: {},
+  data: function() {
     return {
-      resumeList: [
-        {'name': 'material-dark'},
-        {'name': 'left-right'},
-        {'name': 'oblique'},
-        {'name': 'side-bar'},
-        {'name': 'purple'},
-        {'name': 'left-right-rtl'},
-        {'name': 'side-bar-rtl'},
-        {'name': 'web-frontend'}
-      ]
+      resumeList: this.$store.state.resumeList
     };
   },
   methods: {
@@ -60,40 +52,35 @@ export default Vue.component('resume', {
       // window.open(routeData.href, "_blank");
       // this.$router.push("/data", {params: { resumeid: name }})
       this.$router.push({
-          name: 'data',
-          params: {
-            resumeid: name
-          }
-        })
+        name: "data",
+        params: {
+          resumeid: name
+        }
+      });
     }
   }
 });
 </script>
 
 <style scoped>
-.home {
-  font-family: 'Roboto' !important;
-}
-
-.content {
-  padding: 20px;
+.cv_item {
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 .previews {
   width: 90%;
   margin-right: auto;
   margin-left: auto;
+  padding-top: 20px;
 }
 
 .preview {
   position: relative;
-  width: 180px;
-  float: left;
-  margin-top: 1.5%;
-  margin-left: 1.5%;
-  margin-right: 1.5%;
-  margin-bottom: 1.5%;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-  height: 252px;
+  padding-top: 1.5%;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  padding-bottom: 1.5%;
   overflow: hidden;
 }
 .preview:hover {
@@ -137,7 +124,7 @@ export default Vue.component('resume', {
   top: 50%;
   transform: translateY(-50%);
 }
-.bg-white  {
+.bg-white {
   background-color: white;
 }
 .bg-white .preview-wrapper {

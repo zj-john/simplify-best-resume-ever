@@ -1,41 +1,34 @@
 <template>
   <div class="wrapper">
-    <div class="data-wrapper card">
-      <div class="card-title">
-        <div class="title">个人数据</div>
-        <div class="action">
-          <!-- <button class="btn btn-primary btn-sm" @click="saveData" title="保存至本地缓存">保存</button> -->
-          <button class="btn btn-info btn-sm" @click="reInit" title="恢复至样例数据">还原</button>
-        </div>
+    <Card class="data-wrapper">
+      <p slot="title">个人数据</p>
+      <div slot="extra">
+        <!-- <Button type="primary" @click="saveData" size="small" title="保存至本地缓存">保存</Button> -->
+        <Button type="primary" @click="exportJson" size="small" title="下载JSON数据到本地">下载</Button>
+        <Button type="info" @click="reInit" size="small" title="恢复至样例数据">还原</Button>
       </div>
-      <div class="card-content">
-        <template>
-          <!-- <data-json :data="resume_data" @save="saveData" /> -->
-          <data-json-shard :data="resume_data" @save="saveData" />
-        </template>
-        <!-- <template></template> -->
+      <template>
+        <!-- <data-json :data="resume_data" @save="saveData" /> -->
+        <data-json-shard :data="resume_data" @save="saveData" />
+      </template>
+    </Card>
+
+    <Card class="cv-wrapper">
+      <p slot="title">简历模板</p>
+      <div slot="extra">
+        <Button type="primary" @click="preview" size="small" title="导出预览">导出当前简历</Button>
       </div>
-    </div>
-    <div class="cv-wrapper card">
-      <div class="card-title">
-        <div class="title">简历模板</div>
-        <div class="action">
-          <button class="btn btn-primary btn-sm" @click="preview" title="导出预览">导出当前简历</button>
-        </div>
-      </div>
-      <div class="card-content">
-        <div class="content-title">
-          <span class="pre" @click="preCv">← 上一个</span>
+      <div class="content-title">
+          <span class="pre" @click="preCv"><Icon type="ios-arrow-back" />上一个</span>
           <!-- <span>{{this.currentCvIndex}}</span> -->
-          <span class="next" @click="nextCv">下一个 →</span>
+          <span class="next" @click="nextCv">下一个<Icon type="ios-arrow-forward" /></span>
         </div>
         <div class>
           <div class="page-wrapper">
             <cv-page :resume-name="resumeList[currentCvIndex].name" style="border:1px solid #ccc" />
           </div>
         </div>
-      </div>
-    </div>
+    </Card>
   </div>
 </template>
 
@@ -43,9 +36,9 @@
 import dataJson from "@/components/views/dataJson.vue";
 import dataJsonShard from "@/components/views/dataJsonShard.vue";
 import cvPage from "@/components/views/cvPage.vue";
-import * as INITDATA from "../../resume/data.json";
+import * as INITDATA from "../../resume/datav2.json";
 import "../resumes/resumes";
-import { dateFormat } from "@/services/utils.js";
+import { dateFormat,exportFile } from "@/services/utils.js";
 export default {
   components: {
     dataJson,
@@ -71,12 +64,12 @@ export default {
         return item.name == this.$route.params.resumeid;
       });
     }
-    this.currentCvIndex = index
+    this.currentCvIndex = index;
   },
   mounted: function() {},
   methods: {
     saveData: function(data) {
-      this.$store.dispatch("setResumeData", data);
+      this.$store.dispatch("setResumeData", JSON.stringify(data));
       this.resume_data = data;
     },
     reInit: function(event) {
@@ -106,6 +99,9 @@ export default {
         params: { resumeid: this.resumeList[this.currentCvIndex].name }
       });
       window.open(routeData.href, "_blank");
+    },
+    exportJson: function() {
+      exportFile(this.resume_data, 'cv.json')
     }
   }
 };
