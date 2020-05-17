@@ -8,3 +8,4 @@ import './purple.vue';
 import './side-bar-rtl.vue';
 import './left-right-rtl.vue';
 import './web-frontend.vue';
+import './common-1.vue';

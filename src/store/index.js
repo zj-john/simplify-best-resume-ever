@@ -17,7 +17,8 @@ const resumeList = [
     // { 'name': 'purple' },
     // { 'name': 'left-right-rtl' },
     // { 'name': 'side-bar-rtl' },
-    { 'name': 'web-frontend' }
+    { 'name': 'web-frontend' },
+    { 'name': 'common-1' }
 ];
 
 const cv_init_config = {
